@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Link from "next/link";
 import {
@@ -15,7 +15,7 @@ import {
   SiHtml5,
   SiJavascript,
   SiLaravel,
-  SiCss, // ✅ perbaiki: SiCss (bukan SiCss3)
+  SiCss,
 } from "react-icons/si";
 import { FaAward } from "react-icons/fa";
 
@@ -34,7 +34,7 @@ export default function TentangPage() {
     { name: "HTML", icon: SiHtml5, color: "#E34F26" },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
     { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
-    { name: "CSS", icon: SiCss, color: "#1572B6" }, // ✅ sudah benar
+    { name: "CSS", icon: SiCss, color: "#1572B6" },
   ];
 
   return (
@@ -144,29 +144,20 @@ export default function TentangPage() {
             </div>
           </div>
 
-          {/* Skill dengan ikon */}
+          {/* Skill */}
           <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-12 overflow-hidden">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
               Teknologi yang Saya Kuasai
             </h2>
-
-            <div className="relative w-full overflow-hidden">
-              <div className="flex animate-marquee whitespace-nowrap gap-6 md:gap-8">
-                {[...skills, ...skills].map((skill, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center gap-1 min-w-[60px] md:min-w-[80px]"
-                  >
-                    <skill.icon
-                      className="w-8 h-8 md:w-10 md:h-10"
-                      style={{ color: skill.color }}
-                    />
-                    <span className="text-[10px] md:text-xs text-gray-600 font-medium">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              {skills.map((skill, index) => (
+                <div key={index} className="flex flex-col items-center gap-1">
+                  <skill.icon className="w-8 h-8 md:w-10 md:h-10" style={{ color: skill.color }} />
+                  <span className="text-[10px] md:text-xs text-gray-600 font-medium">
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -206,21 +197,6 @@ export default function TentangPage() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          display: flex;
-          animation: marquee 20s linear infinite;
-          width: max-content;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 }
