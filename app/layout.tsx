@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; // tambahkan ini
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FEBRIWEBB - Portofolio & Jasa Website",
   description: "Jasa pembuatan website profesional",
+  verification: {
+    google: "oDgYeMk7sY_oOPKE6QpqGn8neDT1_NfdAoflPj8n0i4",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +34,7 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="pt-16">{children}</main>
-        <Footer /> {/* Tambahkan di sini */}
+        <Footer />
       </body>
     </html>
   );
