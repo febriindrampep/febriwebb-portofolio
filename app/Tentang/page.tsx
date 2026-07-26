@@ -1,25 +1,40 @@
-"use client";
+ "use client";
 
 import Link from "next/link";
-import * as Si from "react-icons/si";
-import * as Fa from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiFigma,
+  SiMysql,
+  SiMongodb,
+  SiGoogle,
+  SiPhp,
+  SiHtml5,
+  SiJavascript,
+  SiLaravel,
+  SiCss, // ✅ perbaiki: SiCss (bukan SiCss3)
+} from "react-icons/si";
+import { FaAward } from "react-icons/fa";
 
 export default function TentangPage() {
   const skills = [
-    { name: "Next.js", icon: Si.SiNextdotjs, color: "#000000" },
-    { name: "React", icon: Si.SiReact, color: "#61DAFB" },
-    { name: "TypeScript", icon: Si.SiTypescript, color: "#3178C6" },
-    { name: "Tailwind CSS", icon: Si.SiTailwindcss, color: "#06B6D4" },
-    { name: "Node.js", icon: Si.SiNodedotjs, color: "#339933" },
-    { name: "UI/UX Design", icon: Si.SiFigma, color: "#F24E1E" },
-    { name: "MySQL", icon: Si.SiMysql, color: "#4479A1" },
-    { name: "MongoDB", icon: Si.SiMongodb, color: "#47A248" },
-    { name: "SEO", icon: Si.SiGoogle, color: "#4285F4" },
-    { name: "PHP", icon: Si.SiPhp, color: "#777BB4" },
-    { name: "HTML", icon: Si.SiHtml5, color: "#E34F26" },
-    { name: "JavaScript", icon: Si.SiJavascript, color: "#F7DF1E" },
-    { name: "Laravel", icon: Si.SiLaravel, color: "#FF2D20" },
-    { name: "CSS", icon: Si.SiCss3, color: "#1572B6" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "UI/UX Design", icon: SiFigma, color: "#F24E1E" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "SEO", icon: SiGoogle, color: "#4285F4" },
+    { name: "PHP", icon: SiPhp, color: "#777BB4" },
+    { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+    { name: "CSS", icon: SiCss, color: "#1572B6" }, // ✅ sudah benar
   ];
 
   return (
@@ -53,7 +68,7 @@ export default function TentangPage() {
             </p>
           </div>
 
-          {/* Profil dengan foto - perbaiki dengan img biasa */}
+          {/* Profil */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
             <div className="flex flex-col md:flex-row">
               <div className="md:w-1/3 bg-gray-200 flex items-center justify-center p-6">
@@ -129,35 +144,28 @@ export default function TentangPage() {
             </div>
           </div>
 
-          {/* Skill dengan ikon berjalan - perbaiki mobile */}
+          {/* Skill dengan ikon */}
           <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-12 overflow-hidden">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
               Teknologi yang Saya Kuasai
             </h2>
 
-            <div className="relative w-full overflow-x-auto scrollbar-hide">
-              <div className="flex gap-6 md:gap-8 py-2 min-w-max">
-                {skills.map((skill, index) => {
-                  const IconComponent = skill.icon;
-                  return (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center gap-1 min-w-[60px] md:min-w-[80px]"
-                    >
-                      {IconComponent ? (
-                        <IconComponent
-                          className="w-8 h-8 md:w-10 md:h-10"
-                          style={{ color: skill.color }}
-                        />
-                      ) : (
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-300 rounded-full" />
-                      )}
-                      <span className="text-[10px] md:text-xs text-gray-600 font-medium text-center">
-                        {skill.name}
-                      </span>
-                    </div>
-                  );
-                })}
+            <div className="relative w-full overflow-hidden">
+              <div className="flex animate-marquee whitespace-nowrap gap-6 md:gap-8">
+                {[...skills, ...skills].map((skill, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center gap-1 min-w-[60px] md:min-w-[80px]"
+                  >
+                    <skill.icon
+                      className="w-8 h-8 md:w-10 md:h-10"
+                      style={{ color: skill.color }}
+                    />
+                    <span className="text-[10px] md:text-xs text-gray-600 font-medium">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -166,7 +174,7 @@ export default function TentangPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Fa.FaAward className="w-6 h-6 text-blue-600" />
+                <FaAward className="w-6 h-6 text-blue-600" />
               </div>
               <h4 className="font-bold text-gray-900 text-lg mb-2">Kualitas</h4>
               <p className="text-gray-600 text-sm">
@@ -199,14 +207,18 @@ export default function TentangPage() {
         </div>
       </div>
 
-      {/* CSS tambahan untuk scrollbar hilang */}
       <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+        .animate-marquee {
+          display: flex;
+          animation: marquee 20s linear infinite;
+          width: max-content;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
         }
       `}</style>
     </section>
